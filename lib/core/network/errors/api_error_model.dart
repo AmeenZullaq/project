@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ApiErrorModel {
+class ErrorModel {
   final String errorMessage;
   final Widget? errorImage;
   final int? statusCode;
 
-  const ApiErrorModel({
+  const ErrorModel({
     required this.errorMessage,
     this.errorImage,
     this.statusCode,

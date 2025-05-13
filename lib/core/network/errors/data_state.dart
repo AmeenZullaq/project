@@ -1,5 +1,5 @@
-import 'package:project/core/network/api_error_model.dart';
-import 'package:project/core/network/api_service.dart';
+import 'package:project/core/network/errors/error_model.dart';
+import 'package:project/core/network/services/api_service.dart';
 
 abstract class DataState<T> {}
 
@@ -9,7 +9,7 @@ class DataSuccess<T> extends DataState<T> {
 }
 
 class DataFailure<T> extends DataState<T> {
-  final ApiErrorModel error;
+  final ErrorModel error;
   DataFailure({required this.error});
 }
 
@@ -25,7 +25,7 @@ class RepoImpl {
       return DataSuccess(data: finalData);
     } catch (e) {
       return DataFailure(
-        error: ApiErrorModel(errorMessage: 'errorMessage'),
+        error: ErrorModel(errorMessage: 'errorMessage'),
       );
     }
   }
