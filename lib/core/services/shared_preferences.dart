@@ -11,8 +11,8 @@ class SharedPrefs {
     await _instance.setBool(key, value);
   }
 
-  static bool getBool(String key) {
-    return _instance.getBool(key) ?? false;
+  static bool? getBool(String key) {
+    return _instance.getBool(key);
   }
 
   static Future<void> setString(String key, String value) async {
@@ -27,7 +27,7 @@ class SharedPrefs {
     await _instance.setStringList(key, value);
   }
 
-  static List<String> getStringList(String key) {
-    return _instance.getStringList(key) ?? [];
+  static List<String>? getStringList(String key) {
+    return _instance.getStringList(key);
   }
 }
