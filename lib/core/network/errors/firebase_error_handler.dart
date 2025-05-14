@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:project/core/network/errors/error_handler.dart';
 import 'package:project/core/network/errors/error_model.dart';
 
-class FirebaseErrorHandler extends ErrorHandler {
-  @override
+class FirebaseErrorHandler  {
   ErrorModel handle(dynamic e) {
     if (e is FirebaseAuthException) {
       switch (e.code) {

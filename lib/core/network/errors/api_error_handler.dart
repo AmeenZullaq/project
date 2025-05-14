@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:project/core/network/errors/error_handler.dart';
 import 'package:project/core/network/errors/error_model.dart';
 import 'package:project/core/network/errors/status_codes.dart';
 
-class ApiErrorHandler extends ErrorHandler {
-  @override
+class ApiErrorHandler {
   ErrorModel handle(dynamic e) {
     if (e is DioException) {
       switch (e.type) {
