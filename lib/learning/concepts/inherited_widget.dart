@@ -43,7 +43,7 @@ class ColoredBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// that hard because each time i want to create a copy of ColoredBox i need o defin that is line, so i take it and out in the MyInherited inside of methid
+    /// that hard because each time i want to create a copy of ColoredBox i need o defin that line, so i take it and out in the MyInherited inside of method
     // MyInherited myInherited =
     //     context.dependOnInheritedWidgetOfExactType<MyInherited>()!;
 
