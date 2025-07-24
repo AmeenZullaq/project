@@ -8,6 +8,8 @@ class ContaienrTheme extends InheritedWidget {
   final double size = 100;
 
   static ContaienrTheme of(BuildContext context) {
+    /// This line searches up the widget tree from the current BuildContext to find the nearest ancestor widget of type ContaienrTheme 
+    /// and registers the context as a dependency of that InheritedWidget.
     return context.dependOnInheritedWidgetOfExactType<ContaienrTheme>()!;
   }
 
