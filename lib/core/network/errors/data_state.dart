@@ -1,5 +1,5 @@
 import 'package:project/core/network/errors/error_model.dart';
-import 'package:project/core/network/services/api_service.dart';
+import 'package:project/core/network/dio/api_service.dart';
 
 abstract class DataState<T> {}
 

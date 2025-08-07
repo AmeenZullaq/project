@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:project/core/constants/app_endpoints.dart';
-import 'package:project/core/network/services/api_service.dart';
-import 'package:project/core/network/services/dio_interceptor.dart';
+import 'package:project/core/network/dio/api_service.dart';
+import 'package:project/core/network/dio/dio_interceptor.dart';
 
 class ApiServiceImpl extends ApiService {
   final Dio dio;

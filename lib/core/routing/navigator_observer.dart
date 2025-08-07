@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+/// this is used with built in navigation.
 class NavObserver extends NavigatorObserver {
   List<String> pages = [];
   @override

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:project/core/constants/app_endpoints.dart';
 import 'package:project/core/constants/app_keys.dart';
-import '../../services/shared_preferences.dart';
+import '../../storage/shared_preferences.dart';
 
 class DioInterceptorWrapper implements InterceptorsWrapper {
   final Dio dio;

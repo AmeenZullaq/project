@@ -20,7 +20,7 @@ class Constraints extends StatelessWidget {
                 ),
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: MediaQuery.sizeOf(context).width - 56,
+                    maxWidth: MediaQuery.sizeOf(context).width - (20 * 2 - 16),
                   ),
                   color: Colors.amber,
                   child: Text('hello world'),
@@ -29,6 +29,31 @@ class Constraints extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class FittedBoxEx extends StatelessWidget {
+  const FittedBoxEx({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+          width: 90,
+          height: 44,
+          color: Colors.amber,
+          child: FittedBox(
+            child: Text(
+              'this is a pretty long text',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

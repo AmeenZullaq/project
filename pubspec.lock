@@ -182,30 +182,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  cloud_firestore:
-    dependency: "direct main"
-    description:
-      name: cloud_firestore
-      sha256: "6ca737017131a77940fdcca3e13bf6efb5633d50b83514bba24f5fd68e7f340f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.6.7"
-  cloud_firestore_platform_interface:
-    dependency: transitive
-    description:
-      name: cloud_firestore_platform_interface
-      sha256: "082c9aa0602efc1ee8c44c4e8a29a456b198f79a7f62657df39144c97e364cfb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.6.7"
-  cloud_firestore_web:
-    dependency: transitive
-    description:
-      name: cloud_firestore_web
-      sha256: e1ddeacedd1c5a2e54089bbeb2d95d03b0096eccf8889024598f09f092ed8746
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.4.7"
   code_builder:
     dependency: transitive
     description:
@@ -366,30 +342,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.3+4"
-  firebase_auth:
-    dependency: "direct main"
-    description:
-      name: firebase_auth
-      sha256: "06787c45d773af3db3ae693ff648ef488e6048a00b654620b3b8849988f63793"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.5.3"
-  firebase_auth_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_auth_platform_interface
-      sha256: "5402d13f4bb7f29f2fb819f3b6b5a5a56c9f714aef2276546d397e25ac1b6b8e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.6.2"
-  firebase_auth_web:
-    dependency: transitive
-    description:
-      name: firebase_auth_web
-      sha256: "2be496911f0807895d5fe8067b70b7d758142dd7fb26485cbe23e525e2547764"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.14.2"
   firebase_core:
     dependency: "direct main"
     description:
@@ -438,30 +390,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.10.4"
-  firebase_storage:
-    dependency: "direct main"
-    description:
-      name: firebase_storage
-      sha256: b66435730252985c49aabe83e0490bcfab2e7b3f2192bf421ca596fa490de14a
-      url: "https://pub.dev"
-    source: hosted
-    version: "12.4.5"
-  firebase_storage_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_storage_platform_interface
-      sha256: "08d32cae58200c34f504098d106952213f2e4c32db111ae7757a86887428ab81"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.2.5"
-  firebase_storage_web:
-    dependency: transitive
-    description:
-      name: firebase_storage_web
-      sha256: d6aee6867f8c369a88484367a8b1f0f6d0f022b4ff2622b51e32dfeef839f9d4
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.10.12"
   fixnum:
     dependency: transitive
     description:
@@ -520,14 +448,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.9.3"
-  flutter_secure_storage:
-    dependency: "direct main"
-    description:
-      name: flutter_secure_storage
-      sha256: "9f3dd2ac3b6875b0fde5b04734789c3ef35ba3965c18e99dd564a7a2f8056df6"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.2.1"
   flutter_spinkit:
     dependency: "direct main"
     description:

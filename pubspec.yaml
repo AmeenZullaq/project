@@ -53,13 +53,13 @@ dependencies:
   timezone: ^0.9.4
   cupertino_icons: ^1.0.8
   flutter_native_splash: ^2.4.4
-  firebase_auth: ^5.5.3
-  cloud_firestore: ^5.6.7
-  firebase_storage: ^12.4.5
+  # firebase_auth: ^5.5.3
+  # cloud_firestore: ^5.6.7
+  # firebase_storage: ^12.4.5
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   otp: ^3.1.4
-  flutter_secure_storage: ^4.2.1
+  # flutter_secure_storage: ^4.2.1
   auth_otp: ^1.0.0
 
 dev_dependencies:

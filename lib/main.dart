@@ -73,162 +73,216 @@
 //       },
 //     );
 //   }
-// }
+// }import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
-import 'package:project/core/services/Navigator_observer.dart';
+import 'package:go_router/go_router.dart';
 
-void main() {
-  runApp(
-    MyApp(),
-  );
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorObservers: [NavObserver()],
+    return MaterialApp.router(
+      routerConfig: _router,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
     );
   }
 }
 
-// class FirstScreen extends StatelessWidget {
-//   const FirstScreen({super.key});
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorHomeKey = GlobalKey<NavigatorState>();
+final _shellNavigatorProfileKey = GlobalKey<NavigatorState>();
+final _shellNavigatorSettingsKey = GlobalKey<NavigatorState>();
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('First Screen'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             ElevatedButton(
-//               onPressed: () {
-//                 Navigator.push(
-//                     context,
-//                     PageRouteBuilder(
-//                       pageBuilder: (context, _, __) {
-//                         return SecondScreen();
-//                       },
-//                       transitionsBuilder:
-//                           (context, animation, secondaryAnimation, child) {
-//                         final position =
-//                             Tween<Offset>(begin: Offset(1, 0), end: Offset.zero)
-//                                 .animate(animation);
-//                         return SlideTransition(
-//                           position: position,
-//                           child: child,
-//                         );
-//                       },
-//                     ));
-//               },
-//               child: Text(
-//                 'Go to second screen',
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+final GoRouter _router = GoRouter(
+  navigatorKey: _rootNavigatorKey,
+  initialLocation: '/home',
+  routes: [
+    ShellRoute(
+      navigatorKey: _shellNavigatorHomeKey,
+      builder: (context, state, child) =>
+          TabsScaffold(currentIndex: 0, child: child),
+      routes: [
+        GoRoute(
+          path: '/home',
+          pageBuilder: (context, state) =>
+              const MaterialPage(child: HomeScreen()),
+          routes: [
+            GoRoute(
+              path: 'details',
+              pageBuilder: (context, state) =>
+                  const MaterialPage(child: HomeDetailsScreen()),
+            ),
+          ],
+        ),
+      ],
+    ),
+    ShellRoute(
+      navigatorKey: _shellNavigatorProfileKey,
+      builder: (context, state, child) =>
+          TabsScaffold(currentIndex: 1, child: child),
+      routes: [
+        GoRoute(
+          path: '/profile',
+          pageBuilder: (context, state) =>
+              const MaterialPage(child: ProfileScreen()),
+          routes: [
+            GoRoute(
+              path: 'details',
+              pageBuilder: (context, state) =>
+                  const MaterialPage(child: ProfileDetailsScreen()),
+            ),
+          ],
+        ),
+      ],
+    ),
+    ShellRoute(
+      navigatorKey: _shellNavigatorSettingsKey,
+      builder: (context, state, child) =>
+          TabsScaffold(currentIndex: 2, child: child),
+      routes: [
+        GoRoute(
+          path: '/settings',
+          pageBuilder: (context, state) =>
+              const MaterialPage(child: SettingsScreen()),
+          routes: [
+            GoRoute(
+              path: 'details',
+              pageBuilder: (context, state) =>
+                  const MaterialPage(child: SettingsDetailsScreen()),
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
+);
 
-// class SecondScreen extends StatelessWidget {
-//   const SecondScreen({super.key});
+class TabsScaffold extends StatefulWidget {
+  final int currentIndex;
+  final Widget child;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return PopScope(
-//       canPop: false,
-//       onPopInvokedWithResult: (didPop, result) {
-//         print(didPop);
-//         if (didPop) {
-//           return; // this case when pop excuted, and we put it because if poped then the context in dialog in it in the widge tree
-//         }
+  const TabsScaffold(
+      {super.key, required this.currentIndex, required this.child});
 
-//         showDialog(
-//           context: context,
-//           builder: (context) {
-//             return Column(
-//               children: [
-//                 ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.pop(context);
-//                     Navigator.pop(context);
-//                   },
-//                   child: Text('pop'),
-//                 ),
-//                 SizedBox(
-//                   height: 20,
-//                 ),
-//                 ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.pop(context);
-//                   },
-//                   child: Text('cancle'),
-//                 ),
-//               ],
-//             );
-//           },
-//         );
-//       },
-//       child: Scaffold(
-//         appBar: AppBar(
-//           title: Text('Second Screen'),
-//         ),
-//         body: Center(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.center,
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               ElevatedButton(
-//                 onPressed: () {
-//                   Navigator.pop(context);
-//                 },
-//                 child: Text(
-//                   'Do to Third screen',
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  State<TabsScaffold> createState() => _TabsScaffoldState();
+}
 
-// class ThirdScreen extends StatelessWidget {
-//   const ThirdScreen({super.key});
+class _TabsScaffoldState extends State<TabsScaffold> {
+  int currentIndex = 0;
+  void _onTap(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        context.go('/home');
+        break;
+      case 1:
+        context.go('/profile');
+        break;
+      case 2:
+        context.go('/settings');
+        break;
+    }
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Third Screen'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             ElevatedButton(
-//               onPressed: () {},
-//               child: Text(
-//                 'tap',
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: widget.child,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: widget.currentIndex,
+        onTap: (index) => _onTap(context, index),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
+        ],
+      ),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => context.go('/home/details'),
+          child: const Text('Go to Home Details'),
+        ),
+      ),
+    );
+  }
+}
+
+class HomeDetailsScreen extends StatelessWidget {
+  const HomeDetailsScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home Details')),
+      body: const Center(child: Text('Details inside Home Tab')),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Profile')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => context.go('/profile/details'),
+          child: const Text('Go to Profile Details'),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileDetailsScreen extends StatelessWidget {
+  const ProfileDetailsScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Profile Details')),
+      body: const Center(child: Text('Details inside Profile Tab')),
+    );
+  }
+}
+
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Settings')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => context.go('/settings/details'),
+          child: const Text('Go to Settings Details'),
+        ),
+      ),
+    );
+  }
+}
+
+class SettingsDetailsScreen extends StatelessWidget {
+  const SettingsDetailsScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Settings Details')),
+      body: const Center(child: Text('Details inside Settings Tab')),
+    );
+  }
+}
