@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:project/core/services/shared_preferences.dart';
+import 'package:project/core/storage/shared_preferences.dart';
 import 'package:project/core/theme/app_themes.dart';
 import 'package:project/core/theme/cubit/theme_cubit.dart';
 
@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
             builder: (context, newMode) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                navigatorObservers: [NavObserver()], // with built in navigator
+                // navigatorObservers: [NavObserver()], // with built in navigator
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
@@ -73,3 +73,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+}
