@@ -13,9 +13,9 @@ class DioInterceptorWrapper implements InterceptorsWrapper {
     RequestInterceptorHandler handler,
   ) {
     if (options.extra['isRequireToken'] == true) {
-      if (SharedPrefs.getString(AppKeys.accessToken) != null) {
+      if (SecureStorage.getString(AppKeys.accessToken) != null) {
         options.headers['Authorization'] =
-            'Bearer ${SharedPrefs.getString(AppKeys.accessToken)}';
+            'Bearer ${SecureStorage.getString(AppKeys.accessToken)}';
       }
     }
     handler.next(options); // Pass the request to the next handler
@@ -40,7 +40,7 @@ class DioInterceptorWrapper implements InterceptorsWrapper {
         // Retry the original request with the new access token
         final options = ex.requestOptions;
         options.headers['Authorization'] =
-            'Bearer ${SharedPrefs.getString(AppKeys.accessToken)}';
+            'Bearer ${SecureStorage.getString(AppKeys.accessToken)}';
         try {
           final response = await dio.fetch(options);
           handler.resolve(response);
@@ -59,15 +59,15 @@ class DioInterceptorWrapper implements InterceptorsWrapper {
       final response = await dio.post(
         AppEndpoints.refreshToken,
         data: {
-          'refreshToken': SharedPrefs.getString(AppKeys.refreshToken),
+          'refreshToken': SecureStorage.getString(AppKeys.refreshToken),
         },
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        await SharedPrefs.setString(
+        await SecureStorage.setString(
           AppKeys.accessToken,
           response.data['accessToken'],
         );
-        await SharedPrefs.setString(
+        await SecureStorage.setString(
           AppKeys.refreshToken,
           response.data['refreshToken'],
         );
