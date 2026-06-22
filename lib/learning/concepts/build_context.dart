@@ -10,7 +10,7 @@ You're asking Flutter:
 "Hey Flutter, starting from this widget's location (context), go up the widget tree and find the nearest Theme widget — then give me its primaryColor."
  
 
- ⚙️ What Happens Under the Hood?
+ 1 What Happens Under the Hood?
 Theme.of(context) is a static method.
 
 It uses context.dependOnInheritedWidgetOfExactType<Theme>().
