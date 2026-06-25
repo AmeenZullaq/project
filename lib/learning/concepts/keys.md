@@ -191,4 +191,27 @@ When do you use GlobalKey<NavigatorState>?
 
 What does GlobalKey.currentState give you?
 → direct reference to the State object of the attached widget
+
+examples : 
+
+dartfinal _formKey = GlobalKey<FormState>();
+
+// currentState gives you FormState
+// FormState has these methods:
+_formKey.currentState!.validate();  // runs all validator functions
+_formKey.currentState!.save();      // runs all onSaved functions
+_formKey.currentState!.reset();     // clears all form fields
+dartfinal _scaffoldKey = GlobalKey<ScaffoldState>();
+
+// currentState gives you ScaffoldState
+// ScaffoldState has these methods:
+_scaffoldKey.currentState!.openDrawer();
+_scaffoldKey.currentState!.openEndDrawer();
+dartfinal _navigatorKey = GlobalKey<NavigatorState>();
+
+// currentState gives you NavigatorState
+// NavigatorState has these methods:
+_navigatorKey.currentState!.push(...);
+_navigatorKey.currentState!.pop();
+_navigatorKey.currentState!.pushNamed('/home');
 ```
